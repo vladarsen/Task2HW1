@@ -1,5 +1,7 @@
 package com.vladarsenjtev;
 
+import java.util.Objects;
+
 public class Point {
     int x;
     int y;
@@ -27,6 +29,19 @@ public class Point {
 
     public static double distance(Point p1, Circle c2) {
         return Math.sqrt((c2.x - p1.x) * (c2.x - p1.x) + (c2.y - p1.y) * (c2.y - p1.y));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return x == point.x && y == point.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override
